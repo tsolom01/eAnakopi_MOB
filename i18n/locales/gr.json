@@ -1,0 +1,154 @@
+{
+  "confirm" : "Επιβεβαίωση",
+  "start" : "ΕΝΑΡΞΗ",
+  "end" : "ΤΕΛΟΣ",
+  "close" : "Κλείσιμο",
+  "back" : "Επιστροφή",
+  "confirmCardiacArrest" : "Confirm Cardiac Arrest",
+  "startCPRSequence" : "Εναρξη",
+  "stopCPRSequence" : "Τερματισμός",
+  "stop" : "Διακοπή",
+  "rosc" : "Rosc",
+  "airwayManagement" : "Διαχείριση Αεραγωγού",
+
+  "selectStopReason" : "Επιλογή Λόγου Τερματισμού",
+  "roscOption" : "Επιστροφή Κυκλοφορίας",
+  "falseCall" : "Λανθασμένη Κλήση",
+  "foundInROSC" : "Βρέθηκε σε Επιστροφή Κυκλοφορίας",
+  "noROSC" : "Χωρίς Επιστροφή Κυκλοφορίας",
+  "cancel" : "Ακύρωση",
+  "settings" : "Ρυθμίσεις",
+  "guides" : "Οδηγός",
+  "enableHeartbeat" : "Ενεργοποίηση Ήχου Καρδιάς",
+  "language" : "Γλώσσα",
+  "english" : "Αγγλικά",
+  "greek" : "Ελληνικά",
+  "selectMedication" : "Επιλογή Φαρμάκου",
+  "anaphylaxis" : "ΑΝΑΦΥΛΑΞΙΑ",
+  "selectAirway" : "Επιλογή Αεραγωγού",
+  "selectRhythm" : "Επιλογή Ρυθμού",
+  "cycle" : "Κύκλος",
+  "eventLog" : "Ιστορικό Γεγονότων",
+  "menu" : "Μενού",
+  "shocks" : "Ηλεκτροσόκ",
+  "adrenaline" : "Αδρεναλίνη",
+  "amiodarone" : "Αμιοδαρόνη",
+  "other" : "Άλλο",
+  "enterMedication" : "Εισάγετε το όνομα του φαρμάκου",
+  "ercAlgorithms" : "Αλγόριθμοι ERC 2021",
+  "inHospitalResuscitation" : "Αναζωογόνηση εντός νοσοκομείου",
+  "advancedLifeSupport" : "ΑΛΓΌΡΙΘΜΟΣ ALS",
+  "tachycardia" : "ΤΑΧΥΚΑΡΔΙΑ",
+  "bradycardia" : "ΒΡΑΔΥΚΑΡΔΙΑ",
+  "traumaticCardiacArrest" : "K.A ΜΕΤΆ ΑΠΌ ΤΡΑΥΜΑΤΙΣΜΌ",
+  "hyperkalaemia" : "ΥΠΕΡΚΑΛΙΑΙΜΙΑ",
+  "accidentalHypothermia" : "ΥΠΟΘΕΡΜΙΑ",
+  "icpr" : "ICPR",
+  "hyperthermia" : "ΥΠΕΡΘΕΡΜΙΑ",
+  "coronaryThrombosis" : "ΘΡΟΜΒΩΣΗ ΣΤΕΦΑΝΙΑΙΩΝ",
+  "toxicExposure" : "ΔΗΛΗΤΗΡΙΑΣΕΙΣ",
+  "cardiacSurgery" : "ΚΑΡΔΙΟΧΕΙΡΟΥΡΓΙΚΗ",
+  "cardiacCatheterisationLab" : "ΕΡΓΑΣΤΗΡΙΟ ΚΑΘΕΤΗΡΙΑΣΜΩΝ",
+  "acuteAsthma" : "ΚΡΙΣΗ ΑΣΘΜΑΤΟΣ",
+  "roscConfirmation" : "Είστε σίγουροι ότι θέλετε να δηλώσετε ROSC;",
+  "yes" : "Ναι",
+  "no" : "Όχι",
+  "hideAirwayPanel" : "Απόκρυψη Αεραγωγού",
+  "airwayPanel" : "Αεραγωγοί",
+  "hideMedicationPanel" : "Απόκρυψη Φαρμάκων",
+  "medicationPanel" : "Φάρμακα",
+  "pleaseSelectFromList": "Παρακαλώ Επιλέξτε",
+  "end_reason": {
+    "rosc": {
+      "label": "Επιστροφή Αυθόρμητης Κυκλοφορίας (ROSC)",
+      "description": "Η αυθόρμητη κυκλοφορία αποκαταστάθηκε"
+    },
+    "false_call": {
+      "label": "Λανθασμένος Συναγερμός",
+      "description": "Δεν υπήρχε καρδιακή ανακοπή"
+    },
+    "found_in_rosc": {
+      "label": "Βρέθηκε σε ROSC",
+      "description": "Ο ασθενής είχε ήδη ROSC όταν έφτασαν οι διασώστες"
+    },
+    "no_rosc": {
+      "label": "Χωρίς ROSC",
+      "description": "Δεν υπήρξε ανταπόκριση παρά τις προσπάθειες ανάνηψης"
+    },
+    "title": "Αποτέλεσμα Περιστατικού;"
+  },
+  "intervention": {
+    "adrenaline": {
+      "label": "Αδρεναλίνη",
+      "description": "Αυξάνει τον καρδιακό ρυθμό και βελτιώνει την κυκλοφορία κατά την καρδιακή ανακοπή."
+    },
+    "amiodarone": {
+      "label": "Αμιοδαρόνη",
+      "description": "Χρησιμοποιείται για απειλητικές για τη ζωή αρρυθμίες όταν η απινίδωση αποτυγχάνει."
+    },
+    "shock": {
+      "label": "Ηλεκτροσόκ",
+      "description": "Δίνει ηλεκτρική εκκένωση για αποκατάσταση φυσιολογικού καρδιακού ρυθμού."
+    },
+    "magnesium": {
+      "label": "Μαγνήσιο",
+      "description": "Χορηγείται για ειδικές αρρυθμίες όπως η torsades de pointes."
+    },
+    "calcium_chloride": {
+      "label": "Χλωριούχο ασβέστιο",
+      "description": "Υποστηρίζει τη συσταλτικότητα της καρδιάς σε περιπτώσεις όπως υπερκαλιαιμία ή υπερδοσολογία."
+    },
+    "endotracheal_tube": {
+      "label": "Ενδοτραχειακός σωλήνας",
+      "description": "Διασφαλίζει τον αεραγωγό και επιτρέπει ελεγχόμενο αερισμό."
+    },
+    "igel": {
+      "label": "I-GEL",
+      "description": "Υπερεπιγλωττιδική συσκευή αεραγωγού για γρήγορη και εύκολη διαχείριση."
+    }
+  },
+  "airway_list": {
+    "title": "Επιλέξτε αεραγωγό"
+  },
+  "medication_extra_list": {
+    "title": "Επιλέξτε φάρμακο"
+  },
+  "medication_extra_button": "Χορήγηση άλλου φαρμάκου",
+  "medication_custom_input": {
+    "title": "Καταχώριση Φαρμάκου",
+    "placeholder": "Πληκτρολογήστε το όνομα του φαρμάκου...",
+    "confirm": "Επιβεβαίωση",
+    "cancel": "Ακύρωση"
+  },
+  "airway_button": "Αεραγωγός",
+  "rhythms": {
+    "VF": {
+      "label": "ΚΙ",
+      "description": "Κοιλιακή Μαρμαρυγή"
+    },
+    "PVT": {
+      "label": "ΑΚΤ",
+      "description": "Άπνοη Κοιλιακή Ταχυκαρδία"
+    },
+    "ASYSTOLE": {
+      "label": "ΑΣΥΣΤΟΛΙΑ",
+      "description": "Ασυστολία"
+    },
+    "PEA": {
+      "label": "ΗΔΔ",
+      "description": "Ηλεκτρική Δραστηριότητα Χωρίς Σφυγμό"
+    }
+  },
+  "rhythms_list": {
+    "title": "Επιλογή Ρυθμού"
+  },
+
+  "menuModal": {
+    "settings": "Ρυθμίσεις",
+    "guide": "Οδηγός",
+    "ercAlgorithms": "Αλγόριθμοι ERC 2021"
+  },
+  "settingModal": {
+    "cprCycleDuration": "Διάρκεια κύκλου ΚΑΡΠΑ (δευτ.)"
+  }
+}

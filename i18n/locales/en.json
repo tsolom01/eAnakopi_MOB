@@ -1,0 +1,163 @@
+{
+  "start" : "START",
+  "confirm" : "Confirm",
+  "end" : "END",
+  "close" : "Close",
+  "back" : "Back",
+  "confirmCardiacArrest" : "Confirm Cardiac Arrest",
+  "startCPRSequence" : "Start",
+  "stopCPRSequence" : "Stop",
+  "stop" : "Stop",
+  "rosc" : "ROSC",
+  "airwayManagement" : "Airway Management",
+
+  "selectStopReason" : "Select Stop Reason",
+  "roscOption" : "ROSC",
+  "falseCall" : "False Call",
+  "foundInROSC" : "Found in ROSC",
+  "noROSC" : "No ROSC",
+  "anaphylaxis" : "ANAPHYLAXIS",
+  "cancel" : "Cancel",
+  "settings" : "Settings",
+  "guides" : "Guides",
+  "enableHeartbeat" : "Enable Heartbeat Sound",
+  "language" : "Language",
+  "english" : "English",
+  "greek" : "Greek",
+  "selectMedication" : "Select Medication",
+  "selectAirway" : "Select Airway",
+  "selectRhythm" : "Select Rhythm",
+  "cycle" : "Cycle",
+  "eventLog" : "Event Log",
+  "menu" : "Menu",
+  "shocks" : "Shocks",
+  "adrenaline" : "Adrenaline",
+  "amiodarone" : "Amiodarone",
+  "other" : "Other",
+  "enterMedication" : "Enter Medication Name",
+  "ercAlgorithms" : "ERC Algorithms 2021",
+  "inHospitalResuscitation" : "IN-HOSPITAL RESUSCITATION",
+  "advancedLifeSupport" : "ALS ALGORITHM",
+  "tachycardia" : "TACHYCARDIA",
+  "bradycardia" : "BRADYCARDIA",
+  "traumaticCardiacArrest" : "TRAUMATIC CARDIAC ARREST",
+  "hyperkalaemia" : "HYPERKALAEMIA",
+  "accidentalHypothermia" : "ACCIDENTAL HYPOTHERMIA",
+  "icpr" : "ICPR",
+  "hyperthermia" : "HYPERTHERMIA",
+  "coronaryThrombosis" : "CORONARY THROMBOSIS",
+  "toxicExposure" : "TOXIC EXPOSURE",
+  "cardiacSurgery" : "CARDIAC SURGERY",
+  "cardiacCatheterisationLab" : "CARDIAC CATHETERISATION LABORATORY",
+  "acuteAsthma" : "ACUTE ASTHMA",
+  "roscConfirmation" : "Are you sure you want to declare ROSC?",
+  "yes" : "Yes",
+  "no" : "No",
+  "hideAirwayPanel" : "Hide Airway",
+  "airwayPanel" : "Airway",
+  "hideMedicationPanel" : "Hide Medication",
+  "medicationPanel" : "Medication",
+  "pleaseSelectFromList": "Please select from the list",
+  "end_reason": {
+    "rosc": {
+      "label": "ROSC (Return of Spontaneous Circulation)",
+      "description": "Spontaneous circulation was restored"
+    },
+    "false_call": {
+      "label": "False Alarm",
+      "description": "No cardiac arrest was present"
+    },
+    "found_in_rosc": {
+      "label": "Found in ROSC",
+      "description": "Patient already had ROSC when responders arrived"
+    },
+    "no_rosc": {
+      "label": "No ROSC",
+      "description": "No response despite resuscitation efforts"
+    },
+    "title": "Incident outcome?"
+  },
+  "intervention": {
+      "adrenaline": {
+        "label": "Adrenaline",
+        "pluralLabel": "Adrenaline",
+        "description": "Increases heart rate and improves blood flow during cardiac arrest."
+      },
+      "amiodarone": {
+        "label": "Amiodarone",
+        "pluralLabel": "Amiodarone",
+        "description": "Used to treat life-threatening arrhythmias when defibrillation fails."
+      },
+      "shock": {
+        "label": "Shock",
+        "pluralLabel": "Shocks",
+        "description": "Delivers an electric current to restore a normal heart rhythm."
+      },
+      "magnesium": {
+        "label": "Magnesium",
+        "description": "Given for specific arrhythmias like torsades de pointes."
+      },
+      "calcium_chloride": {
+        "label": "Calcium Chloride",
+        "description": "Supports cardiac contractility in cases like hyperkalemia or overdose."
+      },
+      "endotracheal_tube": {
+        "label": "Endotracheal Tube",
+        "description": "Secures the airway and allows for controlled ventilation."
+      },
+      "igel": {
+        "label": "I-GEL",
+        "description": "A supraglottic airway device for quick and easy airway management."
+      }
+  },
+  "airway_list": {
+    "title": "Select Airway Intervention"
+  },
+  "medication_extra_list": {
+    "title": "Select Medication"
+  },
+  "medication_extra_button" : "Administration of other medication",
+  "medication_custom_input": {
+    "title": "Enter Medication",
+    "placeholder": "Type medication name...",
+    "confirm": "Confirm",
+    "cancel": "Cancel"
+  },
+  "airway_button" : "Airway Management",
+  "rhythms": {
+    "VF": {
+      "label": "VF",
+      "description": "Ventricular Fibrillation"
+    },
+    "PVT": {
+      "label": "PVT",
+      "description": "Pulseless Ventricular Tachycardia"
+    },
+    "ASYSTOLE": {
+      "label": "ASYSTOLE",
+      "description": "Asystole"
+    },
+    "PEA": {
+      "label": "PEA",
+      "description": "Pulseless Electrical Activity"
+    }
+  },
+  "rhythms_list": {
+    "title": "Select Rhythm"
+  },
+
+  "menuModal": {
+    "settings": "Settings",
+    "guide" : "Guides",
+    "ercAlgorithms" : "ERC Algorithms 2021"
+  },
+
+  "settingModal": {
+    "cprCycleDuration": "CPR cycle duration(Sec)"
+
+  }
+
+
+
+
+}
