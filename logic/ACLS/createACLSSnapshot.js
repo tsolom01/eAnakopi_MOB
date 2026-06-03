@@ -1,16 +1,14 @@
-
-
 import { useCPRTimerStore } from '../../stores/timerStore';
 import { useRhythmStore } from '../../stores/rhythmStore';
 import { useInterventionStore } from '../../stores/interventionStore';
 
-export const useCurrentACLSContext = () => {
+/** Captures timer, rhythm, and intervention state at call time (not a React hook). */
+export const createACLSSnapshot = (type, action, calledFrom, comment) => {
     const { arrestTimer, cprTimer, cyclesCounter } = useCPRTimerStore.getState();
     const currentRhythm = useRhythmStore.getState().selectedRhythm;
     const interventionCounters = useInterventionStore.getState().interventionCounters;
 
-    // Return a function that accepts additional metadata
-    return ( type,action, calledFrom, comment) => ({
+    return {
         type,
         action,
         timestamp: new Date().toISOString(),
@@ -21,5 +19,5 @@ export const useCurrentACLSContext = () => {
         interventionCounters,
         comment,
         calledFrom,
-    });
+    };
 };

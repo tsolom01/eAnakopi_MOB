@@ -20,7 +20,6 @@ export const useCPRTimerStore = create((set, get) => ({
         cpr: null,
     },
 
-    setLastCycleAdrenalineGiven: (cycle) => set({ lastCycleAdrenalineGiven: cycle }),
     // Start arrestTimer (e.g. when cardiac arrest is confirmed)
     startArrestTimer: () => {
         if (get().isArrestTimerRunning) return;

@@ -1,43 +1,107 @@
 import React from 'react';
-import {    Modal,    ScrollView,    Text,    TouchableOpacity,    View } from 'react-native';
-import modalStyles from '../../../../styles/modal.js';
-import styles from './styles';
-import {useTranslation} from "react-i18next"; // local
+import { Modal, ScrollView, Text, View, SafeAreaView, StyleSheet } from 'react-native';
+import { useTranslation } from 'react-i18next';
+import { ModalScreenHeader } from '../../../common/ModalScreenHeader';
+import { scale } from '../../../../utils/scale';
+import { COLORS } from '../../../../styles/layout';
 
+const GUIDE_STEPS_EN = [
+    'Press START to begin the arrest timer.',
+    'Confirm cardiac arrest when ready — rhythm selection appears immediately.',
+    'Follow the CPR cycle prompts (default 120 seconds per cycle).',
+    'Select the appropriate rhythm at the end of each cycle.',
+    'Use ROSC if spontaneous circulation returns.',
+    'Press STOP and choose an outcome when resuscitation ends.',
+];
 
+const GUIDE_STEPS_GR = [
+    'Πατήστε ΕΝΑΡΞΗ για να ξεκινήσετε το χρονόμετρο ανακοπής.',
+    'Επιβεβαιώστε την καρδιακή ανακοπή — εμφανίζεται άμεσα η επιλογή ρυθμού.',
+    'Ακολουθήστε τις οδηγίες του κύκλου CPR (προεπιλογή 120 δευτερόλεπτα).',
+    'Επιλέξτε τον κατάλληλο ρυθμό στο τέλος κάθε κύκλου.',
+    'Χρησιμοποιήστε ROSC εάν επανέλθει αυθόρμητη κυκλοφορία.',
+    'Πατήστε ΔΙΑΚΟΠΗ και επιλέξτε αποτέλεσμα όταν ολοκληρωθεί η ανάνηψη.',
+];
 
-const GuidesModal = ({
-                           visible,
-                         setShowGuidesModal
-                       }) => {
-    const { t,i18n } = useTranslation();
+const GuidesModal = ({ visible, setShowGuidesModal }) => {
+    const { t, i18n } = useTranslation();
+    const steps = i18n.language === 'gr' ? GUIDE_STEPS_GR : GUIDE_STEPS_EN;
+
     return (
-        <Modal visible={visible}  animationType="slide">
-            <View style={modalStyles.modalView}>
-                <Text style={modalStyles.modalText}>{t('guides')}</Text>
-                <ScrollView style={styles.guideContent}>
-                    <Text style={styles.guideText}>
-                        {i18n.language === 'en' ?
-                            "1. Press START to begin the timer\n\n" +
-                            "2. Confirm Cardiac Arrest when ready (shows rhythm selection immediately)\n\n" +
-                            "3. Follow the 120-second cycle prompts\n\n" + // Changed from 10 to 120
-                            "4. Select appropriate rhythm at each cycle\n\n" +
-                            "5. Use the ROSC button if return of spontaneous circulation occurs\n\n" +
-                            "6. Press END when resuscitation is complete" :
-                            "1. Πατήστε ΕΝΑΡΞΗ για να ξεκινήσετε το χρονόμετρο\n\n" +
-                            "2. Επιβεβαιώστε την Καρδιακή Ανακοπή όταν είστε έτοιμοι (εμφανίζει άμεσα την επιλογή ρυθμού)\n\n" +
-                            "3. Ακολουθήστε τις οδηγίες του κύκλου των 120 δευτερολέπτων\n\n" + // Changed from 10 to 120
-                            "4. Επιλέξτε τον κατάλληλο ρυθμό σε κάθε κύκλο\n\n" +
-                            "5. Χρησιμοποιήστε το κουμπί Επιστροφής Κυκλοφορίας εάν επιστρέψει η αυθόρμητη κυκλοφορία\n\n" +
-                            "6. Πατήστε ΤΕΛΟΣ όταν ολοκληρωθεί η ανάνηψη"}
-                    </Text>
+        <Modal visible={visible} animationType="slide" onRequestClose={() => setShowGuidesModal(false)}>
+            <SafeAreaView style={styles.safeArea}>
+                <ModalScreenHeader title={t('guides')} onBack={() => setShowGuidesModal(false)} />
+
+                <ScrollView
+                    style={styles.scroll}
+                    contentContainerStyle={styles.scrollContent}
+                    showsVerticalScrollIndicator={false}
+                >
+                    <Text style={styles.intro}>{t('guidesIntro')}</Text>
+
+                    {steps.map((step, index) => (
+                        <View key={index} style={styles.stepCard}>
+                            <View style={styles.stepBadge}>
+                                <Text style={styles.stepNumber}>{index + 1}</Text>
+                            </View>
+                            <Text style={styles.stepText}>{step}</Text>
+                        </View>
+                    ))}
                 </ScrollView>
-                <TouchableOpacity onPress={() => setShowGuidesModal(false)}>
-                    <Text style={modalStyles.modalOption}>{t('back')}</Text>
-                </TouchableOpacity>
-            </View>
+            </SafeAreaView>
         </Modal>
     );
 };
+
+const styles = StyleSheet.create({
+    safeArea: {
+        flex: 1,
+        backgroundColor: COLORS.background,
+    },
+    scroll: {
+        flex: 1,
+    },
+    scrollContent: {
+        padding: scale(16),
+        paddingBottom: scale(32),
+    },
+    intro: {
+        fontSize: scale(15),
+        color: COLORS.textSecondary,
+        lineHeight: scale(22),
+        marginBottom: scale(16),
+    },
+    stepCard: {
+        flexDirection: 'row',
+        backgroundColor: COLORS.surface,
+        borderRadius: scale(12),
+        padding: scale(14),
+        marginBottom: scale(10),
+        borderWidth: 1,
+        borderColor: COLORS.border,
+        alignItems: 'flex-start',
+    },
+    stepBadge: {
+        width: scale(32),
+        height: scale(32),
+        borderRadius: scale(16),
+        backgroundColor: COLORS.headerBg,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginRight: scale(12),
+        marginTop: scale(2),
+    },
+    stepNumber: {
+        color: '#FFFFFF',
+        fontWeight: '700',
+        fontSize: scale(15),
+    },
+    stepText: {
+        flex: 1,
+        fontSize: scale(15),
+        lineHeight: scale(22),
+        color: COLORS.text,
+    },
+});
 
 export default GuidesModal;

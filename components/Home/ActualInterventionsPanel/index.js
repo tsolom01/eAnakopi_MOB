@@ -3,7 +3,7 @@ import {t} from "i18next";
 import {Image, Text, TouchableOpacity, View , Button, TextInput ,Modal }  from "react-native";
 import React, {useState , useMemo} from "react";
 import { useHandleActualIntervention} from '../../../logic/interventions/useHandleActualIntervention';
-import {interventionProvider} from '../../../providers/interventionProvider'
+import { interventions } from '../../../constants/interventions';
 import { useInterventionStore } from '../../../stores/interventionStore';
 import  {CustomButton} from '../../../components/buttons/customButton'
 import {GenericReasonModal} from "../../modals/Generic/listAndSelectModal";
@@ -28,9 +28,18 @@ const ActualInterventionsPanel = () => {
 
 
 
-    const triggerable = useMemo(() => interventionProvider.filter(item => item.triggerable !== false && item.visible === true),        []    );
-    const nonTriggerableMeds = useMemo(() => interventionProvider.filter(item => item.triggerable === false && item.type === 'medication'),[]);
-    const nonTriggerableAirway = useMemo(() => interventionProvider.filter(item => item.triggerable === false && item.type === 'airway'),[]);
+    const triggerable = useMemo(
+        () => interventions.filter((item) => item.triggerable !== false && item.visible === true),
+        []
+    );
+    const nonTriggerableMeds = useMemo(
+        () => interventions.filter((item) => item.triggerable === false && item.type === 'medication'),
+        []
+    );
+    const nonTriggerableAirway = useMemo(
+        () => interventions.filter((item) => item.triggerable === false && item.type === 'airway'),
+        []
+    );
 
     const renderButton = (item) => (
         <TouchableOpacity
@@ -46,8 +55,7 @@ const ActualInterventionsPanel = () => {
     );
 
     const onOtherMedication = () => {
-        console.log('otherMedication');
-        setShowModal(false); // Close the GenericReasonModal
+        setShowModal(false);
         setCustomMedicationText('');
         setShowCustomInputModal(true);
     }
@@ -58,10 +66,13 @@ const ActualInterventionsPanel = () => {
             <View style={styles.medicationButtonsContainer}>
                 {triggerable.map(renderButton)}
             </View>
+
+            <View style={styles.extraActionsSection}>
             {nonTriggerableAirway.length > 0 && (
                 <CustomButton
                     title="airway_button"
                     translate={true}
+                    compact
                     onPress={() => {
                         setModalItems(nonTriggerableAirway);
                         setModalTitleKey('airway_list.title');
@@ -74,7 +85,8 @@ const ActualInterventionsPanel = () => {
             {nonTriggerableMeds.length > 0 && (
                 <CustomButton
                     title="medication_extra_button"
-                    translate = {true}
+                    translate={true}
+                    compact
                     onPress={() => {
                         setModalItems(nonTriggerableMeds);
                         setModalTitleKey('medication_extra_list.title');
@@ -84,6 +96,8 @@ const ActualInterventionsPanel = () => {
                     }}
                 />
             )}
+            </View>
+
             {showCustomInputModal && (
                 <Modal
                     transparent

@@ -10,6 +10,7 @@ export const CustomButton = ({
                           textStyle,
                           disabled = false,
                           translate = false,
+                          compact = false,
                           ...props
                       }) => {
     const displayText = translate ? t(title) : title;
@@ -20,13 +21,19 @@ export const CustomButton = ({
             disabled={disabled}
             style={[
                 styles.button,
+                compact && styles.buttonCompact,
                 disabled && styles.disabled,
-                style
+                style,
             ]}
             activeOpacity={0.8}
             {...props}
         >
-            <Text style={[styles.text, textStyle]}>
+            <Text
+                style={[styles.text, compact && styles.textCompact, textStyle]}
+                numberOfLines={compact ? 2 : 1}
+                adjustsFontSizeToFit={compact}
+                minimumFontScale={0.8}
+            >
                 {displayText}
             </Text>
         </TouchableOpacity>

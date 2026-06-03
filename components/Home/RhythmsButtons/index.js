@@ -27,7 +27,14 @@ const RhythmsButtons = () => {
                         isDisabled && styles.disabledBox,
                     ]}
                 >
-                    <Text style={styles.text}>{rhythm.id}</Text>
+                    <Text
+                        style={styles.text}
+                        numberOfLines={1}
+                        adjustsFontSizeToFit
+                        minimumFontScale={0.65}
+                    >
+                        {rhythm.id}
+                    </Text>
                 </TouchableOpacity>
             ))}
         </View>

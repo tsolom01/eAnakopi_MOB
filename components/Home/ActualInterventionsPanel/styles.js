@@ -1,5 +1,5 @@
         import { StyleSheet } from 'react-native';
-        import {confirmButtonLeftOffset, scale} from "../../../utils/scale";
+        import { scale } from '../../../utils/scale';
 
         export default StyleSheet.create({
             allMedicationContainer: {
@@ -12,23 +12,29 @@
                 justifyContent: 'space-around',
                 flexWrap: 'wrap',
                 width: '90%',
-                marginBottom: scale(10),
+            },
+            extraActionsSection: {
+                width: '100%',
+                alignItems: 'center',
+                marginTop: scale(3),
+                marginBottom: scale(4),
+                gap: scale(4),
             },
 
             medicationButton: {
                 alignItems: 'center',
-                padding: scale(5),
+                padding: scale(2),
             },
             medicationImage: {
-                width: scale(80),
-                height: scale(80),
+                width: scale(90),
+                height: scale(90),
                 resizeMode: 'contain',
             },
             medicationButtonText: {
-                fontSize: scale(14),
+                fontSize: scale(12),
                 fontWeight: 'bold',
                 textAlign: 'center',
-                marginTop: scale(5),
+                marginTop: scale(3),
             },
             divider: {
                 height: 1,

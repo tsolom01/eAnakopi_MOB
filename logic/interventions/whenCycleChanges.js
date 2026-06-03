@@ -1,5 +1,5 @@
 import audioController  from "../audio/audioController";
-import  {handleIntervention} from "./handleIntervention"
+import { recordProposedIntervention } from './interventionRecording';
 import {useInterventionStore} from "../../stores/interventionStore";
 
 
@@ -44,7 +44,7 @@ export const whenCycleChanges = async (rhythm, cycle) => {
         }
 
         if (action.intervention) {
-            handleIntervention(action.intervention, 'cycleChange');
+            recordProposedIntervention(action.intervention, { caller: 'whenCycleChanges' });
         }
 
         if (action.text) {

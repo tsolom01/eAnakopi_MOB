@@ -1,5 +1,5 @@
 import audioController  from "../audio/audioController";
-import  {handleIntervention} from "./handleIntervention"
+import { recordProposedIntervention } from './interventionRecording';
 import { whenCycleChanges } from './whenCycleChanges';
 import {whenShockHappens} from "./whenShockHappens";
 
@@ -15,7 +15,7 @@ export const whenRhythmSelected = async (rhythm,cycleCounter,proposedShocks) => 
                 await playOnce(action.sound);
             }
             if (action.intervention) {
-                handleIntervention(action.intervention);
+                recordProposedIntervention(action.intervention, { caller: 'whenRhythmSelected' });
             }
         }
     const handleCycleAndShock = async () => {

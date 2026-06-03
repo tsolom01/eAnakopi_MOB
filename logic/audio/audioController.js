@@ -4,9 +4,6 @@ import audioFiles from './audioProvider';
 import useAudioStore from '../../stores/useAudioStore';
 
 export default function audioController() {
-    // Store looping sounds
-
-    const soundRefs = {};
     // Play a sound once
     const playOnce = async (key) => {
         return new Promise(async (resolve) => {

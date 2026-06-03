@@ -1,22 +1,29 @@
 import { StyleSheet } from 'react-native';
-//import {scale} from "../../../../utils/scale";
+import { scale, moderateScale } from '../../../utils/scale';
 
 export default StyleSheet.create({
-
     container: {
         flexDirection: 'row',
-        justifyContent: 'space-around',
-        marginVertical: 20,
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '92%',
+        alignSelf: 'center',
+        gap: scale(10),
+        marginVertical: 0,
     },
     box: {
-        padding: 12,
-        borderRadius: 8,
+        flex: 1,
+        paddingVertical: scale(12),
+        paddingHorizontal: scale(3),
+        borderRadius: scale(8),
         backgroundColor: '#cccccc',
-        minWidth: 60,
         alignItems: 'center',
+        justifyContent: 'center',
+        minHeight: scale(36),
+        minWidth: 0,
     },
     selectedBox: {
-        backgroundColor: '#ff3b30', // bright red for visibility
+        backgroundColor: '#ff3b30',
     },
     disabledBox: {
         opacity: 0.5,
@@ -24,5 +31,8 @@ export default StyleSheet.create({
     text: {
         color: 'white',
         fontWeight: 'bold',
+        fontSize: moderateScale(14),
+        textAlign: 'center',
+        width: '100%',
     },
 });
