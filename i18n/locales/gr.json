@@ -23,6 +23,23 @@
   "apply": "Εφαρμογή",
   "settingsSaved": "Αποθηκεύτηκε",
   "pinchToZoom": "Τσίμπημα για μεγέθυνση",
+  "auth": {
+    "login": "Σύνδεση",
+    "loginTitle": "Είσοδος",
+    "logout": "Αποσύνδεση",
+    "profile": "Προφίλ",
+    "username": "Όνομα χρήστη",
+    "profession": "Επάγγελμα",
+    "organisation": "Οργανισμός",
+    "password": "Κωδικός",
+    "usernamePlaceholder": "Εισάγετε όνομα χρήστη",
+    "passwordPlaceholder": "Εισάγετε κωδικό",
+    "errors": {
+      "missing_credentials": "Εισάγετε όνομα χρήστη και κωδικό.",
+      "invalid_credentials": "Μη έγκυρο όνομα χρήστη ή κωδικός.",
+      "login_failed": "Η σύνδεση απέτυχε. Δοκιμάστε ξανά."
+    }
+  },
   "enableHeartbeat" : "Ενεργοποίηση Ήχου Καρδιάς",
   "language" : "Γλώσσα",
   "english" : "Αγγλικά",

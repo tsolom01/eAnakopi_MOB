@@ -22,7 +22,8 @@
     "react-native-image-pan-zoom": "^2.1.12",
     "react-native-svg": "15.11.2",
     "zustand": "^5.0.6",
-    "react-native-safe-area-context": "5.4.0"
+    "react-native-safe-area-context": "5.4.0",
+    "expo-secure-store": "~14.2.4"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

@@ -24,6 +24,23 @@
   "apply": "Apply",
   "settingsSaved": "Saved",
   "pinchToZoom": "Pinch to zoom",
+  "auth": {
+    "login": "Login",
+    "loginTitle": "Sign in",
+    "logout": "Logout",
+    "profile": "Profile",
+    "username": "Username",
+    "profession": "Profession",
+    "organisation": "Organisation",
+    "password": "Password",
+    "usernamePlaceholder": "Enter username",
+    "passwordPlaceholder": "Enter password",
+    "errors": {
+      "missing_credentials": "Please enter username and password.",
+      "invalid_credentials": "Invalid username or password.",
+      "login_failed": "Login failed. Please try again."
+    }
+  },
   "enableHeartbeat" : "Enable Heartbeat Sound",
   "language" : "Language",
   "english" : "English",

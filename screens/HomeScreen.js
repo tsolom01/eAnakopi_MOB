@@ -9,11 +9,15 @@ import RhythmsButtons from '../components/Home/RhythmsButtons';
 import ActualInterventionsPanel from '../components/Home/ActualInterventionsPanel';
 import MenuModal from '../components/screens/Menu/MenuModal/MenuModal';
 import OrganizationLogos from '../components/common/OrganizationLogos';
+import LoginModal from '../components/auth/LoginModal';
+import ProfileScreen from './ProfileScreen';
 import { InterventionWatcher } from '../logic/interventions/InterventionWatcher';
 import styles from './HomeScreen.styles';
 
 const HomeScreen = () => {
     const [showMenuModal, setShowMenuModal] = useState(false);
+    const [showLoginModal, setShowLoginModal] = useState(false);
+    const [showProfile, setShowProfile] = useState(false);
 
     return (
         <SafeAreaView style={styles.container} edges={['top', 'left', 'right']}>
@@ -21,7 +25,11 @@ const HomeScreen = () => {
 
             <View style={styles.mainContent}>
                 <View style={styles.section}>
-                    <HomeTopBar onMenuPress={() => setShowMenuModal(true)} />
+                    <HomeTopBar
+                        onMenuPress={() => setShowMenuModal(true)}
+                        onLoginPress={() => setShowLoginModal(true)}
+                        onProfilePress={() => setShowProfile(true)}
+                    />
                 </View>
 
                 <View style={[styles.section, styles.actionsSection]}>
@@ -47,6 +55,8 @@ const HomeScreen = () => {
             </SafeAreaView>
 
             <MenuModal visible={showMenuModal} setShowMenuModal={setShowMenuModal} />
+            <LoginModal visible={showLoginModal} onClose={() => setShowLoginModal(false)} />
+            <ProfileScreen visible={showProfile} onClose={() => setShowProfile(false)} />
         </SafeAreaView>
     );
 };

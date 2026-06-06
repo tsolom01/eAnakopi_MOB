@@ -1,16 +1,20 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 import { useCPRTimerStore } from '../../stores/timerStore';
+import { useAuthStore } from '../../stores/authStore';
 import { secondsToTimeHHMMSS } from '../../utils/formatTime';
 import { scale, moderateScale } from '../../utils/scale';
+import { COLORS } from '../../styles/layout';
 
-const HomeTopBar = ({ onMenuPress }) => {
+const HomeTopBar = ({ onMenuPress, onLoginPress, onProfilePress }) => {
     const arrestTimer = useCPRTimerStore((state) => state.arrestTimer);
+    const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
 
     return (
         <View style={styles.topBar}>
             <TouchableOpacity
-                style={styles.menuButton}
+                style={styles.sideButton}
                 onPress={onMenuPress}
                 accessibilityRole="button"
                 accessibilityLabel="Menu"
@@ -22,12 +26,30 @@ const HomeTopBar = ({ onMenuPress }) => {
                 {secondsToTimeHHMMSS(arrestTimer)}
             </Text>
 
-            <View style={styles.menuSpacer} />
+            {isAuthenticated ? (
+                <TouchableOpacity
+                    style={styles.sideButton}
+                    onPress={onProfilePress}
+                    accessibilityRole="button"
+                    accessibilityLabel="Profile"
+                >
+                    <Ionicons name="person-circle-outline" size={scale(32)} color={COLORS.headerBg} />
+                </TouchableOpacity>
+            ) : (
+                <TouchableOpacity
+                    style={styles.sideButton}
+                    onPress={onLoginPress}
+                    accessibilityRole="button"
+                    accessibilityLabel="Login"
+                >
+                    <Ionicons name="log-in-outline" size={scale(28)} color={COLORS.accent} />
+                </TouchableOpacity>
+            )}
         </View>
     );
 };
 
-const MENU_SLOT = scale(48);
+const SIDE_SLOT = scale(48);
 
 const styles = StyleSheet.create({
     topBar: {
@@ -37,9 +59,9 @@ const styles = StyleSheet.create({
         paddingHorizontal: scale(12),
         minHeight: scale(40),
     },
-    menuButton: {
-        width: MENU_SLOT,
-        height: MENU_SLOT,
+    sideButton: {
+        width: SIDE_SLOT,
+        height: SIDE_SLOT,
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -55,9 +77,6 @@ const styles = StyleSheet.create({
         color: '#1A1D21',
         textAlign: 'center',
         fontVariant: ['tabular-nums'],
-    },
-    menuSpacer: {
-        width: MENU_SLOT,
     },
 });
 
