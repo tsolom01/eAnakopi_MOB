@@ -1,71 +1,70 @@
-
-import { Audio } from 'expo-av';
+import { createAudioPlayer, setAudioModeAsync } from 'expo-audio';
 import audioFiles from './audioProvider';
 import useAudioStore from '../../stores/useAudioStore';
 
+let audioModeConfigured = false;
+
+const ensureAudioMode = async () => {
+    if (audioModeConfigured) return;
+    await setAudioModeAsync({ playsInSilentMode: true });
+    audioModeConfigured = true;
+};
+
 export default function audioController() {
-    // Play a sound once
     const playOnce = async (key) => {
-        return new Promise(async (resolve) => {
-            if (!audioFiles[key]) {
-                console.warn(`Audio key "${key}" not found.`);
-                return;
-            }
+        if (!audioFiles[key]) {
+            console.warn(`Audio key "${key}" not found.`);
+            return;
+        }
 
-            const {sound} = await Audio.Sound.createAsync(audioFiles[key]);
-            await sound.playAsync();
+        await ensureAudioMode();
 
-            sound.setOnPlaybackStatusUpdate((status) => {
+        return new Promise((resolve) => {
+            const player = createAudioPlayer(audioFiles[key]);
+            const subscription = player.addListener('playbackStatusUpdate', (status) => {
                 if (status.didJustFinish) {
-                    sound.unloadAsync();
+                    subscription.remove();
+                    player.remove();
                     resolve();
                 }
             });
+            player.play();
         });
     };
 
-    // Play a sound in loop
     const playLoop = async (key) => {
         if (!audioFiles[key]) {
             console.warn(`Audio key "${key}" not found.`);
             return;
         }
+
+        await ensureAudioMode();
+
         const { getSoundRef, setSoundRef } = useAudioStore.getState();
         if (getSoundRef(key)) return;
 
-        const { sound } = await Audio.Sound.createAsync(audioFiles[key], {
-            isLooping: true,
-            shouldPlay: true,
-        });
-
-        setSoundRef(key, sound);
+        const player = createAudioPlayer(audioFiles[key]);
+        player.loop = true;
+        player.play();
+        setSoundRef(key, player);
     };
 
-    // Stop and unload a looping sound
     const stop = async (key) => {
         const { getSoundRef, removeSoundRef } = useAudioStore.getState();
-        const sound = getSoundRef(key);
-        if (sound) {
-            await sound.stopAsync();
-            await sound.unloadAsync();
+        const player = getSoundRef(key);
+        if (player) {
+            player.pause();
+            player.loop = false;
+            player.remove();
             removeSoundRef(key);
         }
     };
 
     const isPlaying = async (key) => {
         const { getSoundRef } = useAudioStore.getState();
-        const sound = getSoundRef(key);
-        if (!sound)         return false;
-
-        try {
-            const status = await sound.getStatusAsync();
-            return status.isPlaying;
-        } catch (err) {
-            console.error('Error getting sound status:', err);
-            return false;
-        }
+        const player = getSoundRef(key);
+        return Boolean(player?.playing);
     };
-
 
     return {
         playOnce,

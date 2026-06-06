@@ -1,46 +1,44 @@
-import { Audio } from 'expo-av';
+import { createAudioPlayer, setAudioModeAsync } from 'expo-audio';
 
+let audioModeConfigured = false;
+
+const ensureAudioMode = async () => {
+    if (audioModeConfigured) return;
+    await setAudioModeAsync({ playsInSilentMode: true });
+    audioModeConfigured = true;
+};
 
 export const playAudio = (soundFile, shouldLoop = false, isSoundOn = true) => {
-    return new Promise(async (resolve, reject) => {
+    return new Promise(async (resolve) => {
         if (!soundFile) {
-            console.warn(`No Audio found for: ${soundFile}`);
+            console.warn('No audio file provided.');
             resolve();
             return;
         }
 
-        const sound = new Audio.Sound();
-
         try {
-            await sound.loadAsync(soundFile);
-            await sound.setVolumeAsync(1.0);
-            if (shouldLoop) {
-                await sound.setIsLoopingAsync(true);
-            }
+            await ensureAudioMode();
+            const player = createAudioPlayer(soundFile);
+            player.loop = shouldLoop;
 
-            if (isSoundOn) {
-                await sound.playAsync();
-            } else {
-                await sound.stopAsync();
+            if (!isSoundOn) {
+                player.remove();
                 resolve();
                 return;
             }
 
-            // Listen for playback status updates
-            sound.setOnPlaybackStatusUpdate(async (status) => {
-                if (status.didJustFinish && !status.isLooping) {
-                    try {
-                        await sound.unloadAsync();
-                        resolve();
-                    } catch (unloadError) {
-                        console.warn('Error unloading sound:', unloadError);
-                        resolve(); // Resolve anyway
-                    }
+            const subscription = player.addListener('playbackStatusUpdate', (status) => {
+                if (status.didJustFinish && !shouldLoop) {
+                    subscription.remove();
+                    player.remove();
+                    resolve();
                 }
             });
+
+            player.play();
         } catch (error) {
             console.error('Audio playback failed:', error);
-            resolve(); // Resolve so sequence continues even if error
+            resolve();
         }
     });
 };

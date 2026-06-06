@@ -10,8 +10,9 @@
   },
   "dependencies": {
     "expo": "~53.0.11",
-    "expo-av": "^15.1.6",
+    "expo-audio": "~0.4.9",
     "expo-localization": "~16.1.5",
+    "expo-secure-store": "~14.2.4",
     "expo-status-bar": "~2.2.3",
     "expo-system-ui": "~5.0.8",
     "i18next": "^25.2.1",
@@ -20,15 +21,14 @@
     "react-i18next": "^15.5.3",
     "react-native": "0.79.3",
     "react-native-image-pan-zoom": "^2.1.12",
-    "react-native-svg": "15.11.2",
-    "zustand": "^5.0.6",
     "react-native-safe-area-context": "5.4.0",
-    "expo-secure-store": "~14.2.4"
+    "react-native-svg": "15.11.2",
+    "zustand": "^5.0.6"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
-    "typescript": "~5.8.3",
-    "@types/react": "~19.0.10"
+    "@types/react": "~19.0.10",
+    "typescript": "~5.8.3"
   },
   "private": true
 }
