@@ -1,38 +1,31 @@
 import { StyleSheet } from 'react-native';
-import { scale } from '../utils/scale';
 
 export default StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#FFFFFF',
     },
+    body: {
+        flex: 1,
+        minHeight: 0,
+    },
     mainContent: {
         flex: 1,
+        minHeight: 0,
         width: '100%',
-        justifyContent: 'flex-start',
+        justifyContent: 'space-between',
     },
     section: {
         width: '100%',
         alignItems: 'center',
-        marginBottom: scale(30),
+        flexShrink: 1,
     },
-    actionsSection: {
-        gap: scale(4),
-        marginBottom: scale(0),
-    },
-    cprSection: {
-        marginTop: 0,
-        marginBottom: scale(24),
-    },
-    rhythmsSection: {
-        marginBottom: scale(24),
-    },
+    actionsSection: {},
     interventionsSection: {
-        marginBottom: scale(0),
+        flexShrink: 1,
     },
     footerSafe: {
+        flexShrink: 0,
         backgroundColor: '#FFFFFF',
-        paddingTop: scale(10),
-        paddingBottom: scale(0),
     },
 });

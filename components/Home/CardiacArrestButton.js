@@ -8,9 +8,11 @@ import audioController from '../../logic/audio/audioController';
 import { GenericReasonModal } from '../modals/Generic/listAndSelectModal';
 import { heartRhythms } from '../../constants/rhythm/rhythmDefinitions';
 import { HistoryAction } from '../../constants/history/historyConstants';
+import { useHomeLayout } from '../../context/HomeLayoutContext';
 import timersStyles from './CPRTimer/styles';
 
 const CardiacArrestButton = () => {
+    const { actionButtonPaddingVertical } = useHomeLayout();
     const handleRhythmSelection = useHandleRhythmSelection();
     const isArrestTimerRunning = useCPRTimerStore((state) => state.isArrestTimerRunning);
     const isCPRTimerRunning = useCPRTimerStore((state) => state.isCPRTimerRunning);
@@ -43,6 +45,7 @@ const CardiacArrestButton = () => {
                     {
                         backgroundColor: '#2ECC71',
                         opacity: isArrestTimerRunning && !isCPRTimerRunning ? 1 : 0.5,
+                        paddingVertical: actionButtonPaddingVertical,
                     },
                 ]}
                 onPress={onPress}

@@ -24,14 +24,6 @@ export const moderateScale = (size, factor = 0.45) => size + (scale(size) - size
 export const verticalMargin = verticalScale(4);
 export const sectionSpacing = verticalScale(4);
 
-/** CPR ring size tuned to fit one screen with footer logos (no scroll). */
-export const getCPRTimerSize = () => {
-    if (WINDOW_HEIGHT < 680) return scale(148);
-    if (WINDOW_HEIGHT < 760) return scale(162);
-    if (WINDOW_HEIGHT < 820) return scale(172);
-    return scale(182);
-};
-
 export const confirmButtonLeftOffset = isTablet ? scale(-129) : scale(-116);
 
 export { WINDOW_WIDTH, WINDOW_HEIGHT, isTablet };

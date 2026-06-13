@@ -10,9 +10,16 @@ import {GenericReasonModal} from "../../modals/Generic/listAndSelectModal";
 import {useHistoryStore} from "../../../stores/historyStore";
 import {HistoryAction} from "../../../constants/history/historyConstants";
 
-
+import { useHomeLayout } from '../../../context/HomeLayoutContext';
 
 const ActualInterventionsPanel = () => {
+    const {
+        interventionIconSize,
+        interventionLabelSize,
+        extraButtonGap,
+        extraButtonPaddingVertical,
+        sectionGap,
+    } = useHomeLayout();
 
     const [showModal, setShowModal] = useState(false);
     const [showDescriptions, setShowDescriptions] = useState(true);
@@ -47,8 +54,11 @@ const ActualInterventionsPanel = () => {
             style={styles.medicationButton}
             onPress={() => handleActualIntervention(item,'NA')}
         >
-            <Image source={item.appIcon} style={styles.medicationImage} />
-            <Text style={styles.medicationButtonText}>
+            <Image
+                source={item.appIcon}
+                style={{ width: interventionIconSize, height: interventionIconSize, resizeMode: 'contain' }}
+            />
+            <Text style={[styles.medicationButtonText, { fontSize: interventionLabelSize }]}>
                 {t(`intervention.${item.id}.pluralLabel`, {defaultValue: t(`intervention.${item.id}.label`)})}: {interventionCounters[item.id]?.actual ?? 0}
             </Text>
         </TouchableOpacity>
@@ -67,12 +77,13 @@ const ActualInterventionsPanel = () => {
                 {triggerable.map(renderButton)}
             </View>
 
-            <View style={styles.extraActionsSection}>
+            <View style={[styles.extraActionsSection, { gap: extraButtonGap, marginTop: sectionGap }]}>
             {nonTriggerableAirway.length > 0 && (
                 <CustomButton
                     title="airway_button"
                     translate={true}
                     compact
+                    style={{ paddingVertical: extraButtonPaddingVertical, marginBottom: 0 }}
                     onPress={() => {
                         setModalItems(nonTriggerableAirway);
                         setModalTitleKey('airway_list.title');
@@ -87,6 +98,7 @@ const ActualInterventionsPanel = () => {
                     title="medication_extra_button"
                     translate={true}
                     compact
+                    style={{ paddingVertical: extraButtonPaddingVertical, marginBottom: 0 }}
                     onPress={() => {
                         setModalItems(nonTriggerableMeds);
                         setModalTitleKey('medication_extra_list.title');

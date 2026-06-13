@@ -1,3 +1,4 @@
+import { useHomeLayout } from '../../../context/HomeLayoutContext';
 import styles from './styles';
 import { t } from 'i18next';
 import { useCPRTimerStore } from '../../../stores/timerStore';
@@ -8,6 +9,7 @@ import { GenericReasonModal } from '../../modals/Generic/listAndSelectModal';
 import { ACLS_END_REASONS } from '../../../constants/ACLS/endReasons';
 
 const ArrestTimerVisualizer = () => {
+    const { actionButtonPaddingVertical } = useHomeLayout();
     const [showEndModal, setShowEndModal] = useState(false);
     const { handleStart, handleStop } = useACLSStartStop();
     const isArrestTimerRunning = useCPRTimerStore((state) => state.isArrestTimerRunning);
@@ -23,7 +25,10 @@ const ArrestTimerVisualizer = () => {
     return (
         <View style={styles.wrapper}>
             <TouchableOpacity
-                style={[styles.startButton, { backgroundColor: isArrestTimerRunning ? 'red' : '#2ECC71' }]}
+                style={[
+                    styles.startButton,
+                    { backgroundColor: isArrestTimerRunning ? 'red' : '#2ECC71', paddingVertical: actionButtonPaddingVertical },
+                ]}
                 onPress={onAclsTogglePress}
             >
                 <Text style={styles.buttonText}>

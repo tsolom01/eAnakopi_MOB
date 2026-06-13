@@ -1,14 +1,28 @@
 import React from 'react';
 import { View, Image, StyleSheet } from 'react-native';
 import { scale } from '../../utils/scale';
+import { useHomeLayout } from '../../context/HomeLayoutContext';
 
-const OrganizationLogos = () => (
-    <View style={styles.footer}>
-        <Image source={require('../../assets/images/appImages/okny_logo.png')} style={styles.logo} />
-        <Image source={require('../../assets/images/appImages/university_logo.png')} style={styles.logo} />
-        <Image source={require('../../assets/images/appImages/your_org_logo.png')} style={styles.logo} />
-    </View>
-);
+const OrganizationLogos = () => {
+    const { logoHeight, logoWideWidth } = useHomeLayout();
+
+    return (
+        <View style={styles.footer}>
+            <Image
+                source={require('../../assets/images/organisations/okny_logo.png')}
+                style={[styles.logo, { width: logoHeight, height: logoHeight }]}
+            />
+            <Image
+                source={require('../../assets/images/organisations/university_logo.png')}
+                style={[styles.logoWide, { width: logoWideWidth, height: logoHeight }]}
+            />
+            <Image
+                source={require('../../assets/images/organisations/your_org_logo.png')}
+                style={[styles.logo, { width: logoHeight, height: logoHeight }]}
+            />
+        </View>
+    );
+};
 
 const styles = StyleSheet.create({
     footer: {
@@ -23,9 +37,10 @@ const styles = StyleSheet.create({
         backgroundColor: '#FFFFFF',
     },
     logo: {
-        width: scale(70),
-        height: scale(70),
-        resizeMode: 'center'
+        resizeMode: 'contain',
+    },
+    logoWide: {
+        resizeMode: 'contain',
     },
 });
 

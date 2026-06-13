@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { scale, moderateScale } from '../../../utils/scale';
+import { scale } from '../../../utils/scale';
 import { actionButtonStyle, actionButtonTextStyle } from '../../../styles/layout';
 
 export default StyleSheet.create({
@@ -25,15 +25,12 @@ export default StyleSheet.create({
         alignItems: 'center',
     },
     CPRTimerText: {
-        fontSize: moderateScale(40),
         color: 'red',
         fontWeight: 'bold',
         fontVariant: ['tabular-nums'],
         textAlign: 'center',
     },
     cyclesCounterText: {
-        marginTop: scale(0),
-        fontSize: moderateScale(40),
         color: 'red',
         fontWeight: '600',
         textAlign: 'center',
