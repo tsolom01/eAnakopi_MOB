@@ -13,6 +13,7 @@ import {
 import { useTranslation } from 'react-i18next';
 import { Ionicons } from '@expo/vector-icons';
 import { useAuthStore } from '../../stores/authStore';
+import ForgotPasswordModal from './ForgotPasswordModal';
 import { scale, moderateScale } from '../../utils/scale';
 import { COLORS } from '../../styles/layout';
 
@@ -22,21 +23,22 @@ const LoginModal = ({ visible, onClose }) => {
     const isLoggingIn = useAuthStore((state) => state.isLoggingIn);
     const loginError = useAuthStore((state) => state.loginError);
 
-    const [username, setUsername] = useState('');
+    const [loginId, setLoginId] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
+    const [showForgotPassword, setShowForgotPassword] = useState(false);
 
     const handleLogin = async () => {
-        const success = await login(username, password);
+        const success = await login(loginId, password);
         if (success) {
-            setUsername('');
+            setLoginId('');
             setPassword('');
             onClose();
         }
     };
 
     const handleClose = () => {
-        setUsername('');
+        setLoginId('');
         setPassword('');
         useAuthStore.setState({ loginError: null });
         onClose();
@@ -58,14 +60,15 @@ const LoginModal = ({ visible, onClose }) => {
                         </TouchableOpacity>
                     </View>
 
-                    <Text style={styles.label}>{t('auth.username')}</Text>
+                    <Text style={styles.label}>{t('auth.loginIdentifier')}</Text>
                     <TextInput
                         style={styles.input}
-                        value={username}
-                        onChangeText={setUsername}
+                        value={loginId}
+                        onChangeText={setLoginId}
                         autoCapitalize="none"
                         autoCorrect={false}
-                        placeholder={t('auth.usernamePlaceholder')}
+                        keyboardType="email-address"
+                        placeholder={t('auth.loginIdentifierPlaceholder')}
                         placeholderTextColor={COLORS.textSecondary}
                         editable={!isLoggingIn}
                     />
@@ -99,6 +102,14 @@ const LoginModal = ({ visible, onClose }) => {
                     {errorMessage ? <Text style={styles.error}>{errorMessage}</Text> : null}
 
                     <TouchableOpacity
+                        style={styles.forgotButton}
+                        onPress={() => setShowForgotPassword(true)}
+                        disabled={isLoggingIn}
+                    >
+                        <Text style={styles.forgotText}>{t('auth.forgotPassword.link')}</Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity
                         style={[styles.loginButton, isLoggingIn && styles.loginButtonDisabled]}
                         onPress={handleLogin}
                         disabled={isLoggingIn}
@@ -111,6 +122,12 @@ const LoginModal = ({ visible, onClose }) => {
                     </TouchableOpacity>
                 </View>
             </KeyboardAvoidingView>
+
+            <ForgotPasswordModal
+                visible={showForgotPassword}
+                initialLoginId={loginId}
+                onClose={() => setShowForgotPassword(false)}
+            />
         </Modal>
     );
 };
@@ -170,6 +187,15 @@ const styles = StyleSheet.create({
         color: COLORS.danger,
         fontSize: moderateScale(13),
         marginTop: scale(10),
+    },
+    forgotButton: {
+        alignSelf: 'flex-end',
+        marginTop: scale(10),
+    },
+    forgotText: {
+        color: COLORS.primary,
+        fontSize: moderateScale(14),
+        fontWeight: '600',
     },
     loginButton: {
         backgroundColor: COLORS.primary,

@@ -1,22 +1,64 @@
-/**
- * Authenticates the user and returns profile data with tokens.
- * TODO: Replace with real API call when endpoint is available.
- */
-export const login = async (username, password) => {
-    await new Promise((resolve) => setTimeout(resolve, 400));
+import { apiRequest } from '../api/client';
 
-    if (!username?.trim() || !password?.trim()) {
+/**
+ * Authenticates with username or email.
+ */
+export const login = async (loginId, password) => {
+    if (!loginId?.trim() || !password?.trim()) {
         return { success: false, error: 'missing_credentials' };
     }
 
-    return {
-        success: true,
-        data: {
-            username: username.trim(),
-            profession: 'Emergency Physician',
-            organisation: 'General Hospital',
-            accessToken: `mock_access_${Date.now()}`,
-            refreshToken: `mock_refresh_${username.trim()}`,
-        },
-    };
+    try {
+        const { response, body } = await apiRequest('/auth/login', {
+            method: 'POST',
+            body: JSON.stringify({ login: loginId.trim(), password }),
+        });
+
+        if (!response.ok) {
+            return { success: false, error: body?.error ?? 'invalid_credentials' };
+        }
+
+        return { success: true, data: body.data };
+    } catch (err) {
+        if (__DEV__) {
+            console.warn('[auth/login] network error:', err?.message ?? err);
+        }
+        return { success: false, error: 'network_error' };
+    }
+};
+
+/**
+ * Revokes the user's refresh token on the server.
+ */
+export const logout = async (refreshToken) => {
+    if (!refreshToken) return;
+
+    try {
+        await apiRequest('/auth/logout', {
+            method: 'POST',
+            body: JSON.stringify({ refreshToken }),
+        });
+    } catch {
+        // Client-side session is cleared regardless
+    }
+};
+
+/**
+ * Refreshes the access token using a stored refresh token.
+ */
+export const refreshSession = async (refreshToken) => {
+    try {
+        const { response, body } = await apiRequest('/auth/refresh', {
+            method: 'POST',
+            body: JSON.stringify({ refreshToken }),
+        });
+
+        if (!response.ok) {
+            return { success: false, error: body?.error ?? 'invalid_token' };
+        }
+
+        return { success: true, data: body.data };
+    } catch {
+        return { success: false, error: 'refresh_failed' };
+    }
 };

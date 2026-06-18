@@ -2,9 +2,9 @@ import * as SecureStore from 'expo-secure-store';
 
 const SESSION_KEY = 'auth_session';
 
-/** @typedef {{ username: string, profession: string, organisation: string, refreshToken: string }} StoredSession */
+/** @typedef {{ username: string, email: string | null, profession: string, organisation: string, refreshToken: string }} StoredSession */
 
-/** Persists non-expiring refresh token and user profile (password is never stored). */
+/** Persists refresh token and user profile locally (password is never stored). */
 export const saveSession = async (session) => {
     await SecureStore.setItemAsync(SESSION_KEY, JSON.stringify(session));
 };
@@ -27,7 +27,6 @@ export const loadSession = async () => {
 
 export const clearSession = async () => {
     await SecureStore.deleteItemAsync(SESSION_KEY);
-    // Remove legacy password storage from earlier versions
     await SecureStore.deleteItemAsync('auth_password').catch(() => {});
     await SecureStore.deleteItemAsync('auth_username').catch(() => {});
 };

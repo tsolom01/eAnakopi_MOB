@@ -18,6 +18,7 @@ const ProfileField = ({ label, value }) => (
 const ProfileScreen = ({ visible, onClose }) => {
     const { t } = useTranslation();
     const username = useAuthStore((state) => state.username);
+    const email = useAuthStore((state) => state.email);
     const profession = useAuthStore((state) => state.profession);
     const organisation = useAuthStore((state) => state.organisation);
     const logout = useAuthStore((state) => state.logout);
@@ -41,6 +42,7 @@ const ProfileScreen = ({ visible, onClose }) => {
 
                     <View style={styles.card}>
                         <ProfileField label={t('auth.username')} value={username} />
+                        <ProfileField label={t('auth.email')} value={email} />
                         <ProfileField label={t('auth.profession')} value={profession} />
                         <ProfileField label={t('auth.organisation')} value={organisation} />
                     </View>
