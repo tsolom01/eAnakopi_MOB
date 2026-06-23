@@ -4,7 +4,7 @@
   "end" : "ΤΕΛΟΣ",
   "close" : "Κλείσιμο",
   "back" : "Επιστροφή",
-  "confirmCardiacArrest" : "Confirm Cardiac Arrest",
+  "confirmCardiacArrest" : "Επιβεβαίωση ανακοπής",
   "startCPRSequence" : "Εναρξη",
   "stopCPRSequence" : "Τερματισμός",
   "stop" : "Διακοπή",
@@ -86,7 +86,7 @@
   "amiodarone" : "Αμιοδαρόνη",
   "other" : "Άλλο",
   "enterMedication" : "Εισάγετε το όνομα του φαρμάκου",
-  "ercAlgorithms" : "Αλγόριθμοι ERC 2021",
+  "ercAlgorithms" : "Αλγόριθμοι ERC",
   "inHospitalResuscitation" : "Αναζωογόνηση εντός νοσοκομείου",
   "advancedLifeSupport" : "ΑΛΓΌΡΙΘΜΟΣ ALS",
   "tachycardia" : "ΤΑΧΥΚΑΡΔΙΑ",
@@ -111,7 +111,7 @@
   "pleaseSelectFromList": "Παρακαλώ Επιλέξτε",
   "end_reason": {
     "rosc": {
-      "label": "Επιστροφή Αυθόρμητης Κυκλοφορίας (ROSC)",
+      "label": "Επιστροφή Αυτόματης Κυκλοφορίας (ROSC)",
       "description": "Η αυθόρμητη κυκλοφορία αποκαταστάθηκε"
     },
     "false_call": {
@@ -123,10 +123,10 @@
       "description": "Ο ασθενής είχε ήδη ROSC όταν έφτασαν οι διασώστες"
     },
     "no_rosc": {
-      "label": "Χωρίς ROSC",
+      "label": "Μη Επιστροφή Αυτόματης Κυκλοφορίας (NO ROSC)",
       "description": "Δεν υπήρξε ανταπόκριση παρά τις προσπάθειες ανάνηψης"
     },
-    "title": "Αποτέλεσμα Περιστατικού;"
+    "title": "Έκβαση περιστατικού"
   },
   "intervention": {
     "adrenaline": {
@@ -179,7 +179,7 @@
     },
     "PVT": {
       "label": "ΑΚΤ",
-      "description": "Άπνοη Κοιλιακή Ταχυκαρδία"
+      "description": "Ασφύγμη Κοιλιακή Ταχυκαρδία"
     },
     "ASYSTOLE": {
       "label": "ΑΣΥΣΤΟΛΙΑ",
@@ -187,7 +187,7 @@
     },
     "PEA": {
       "label": "ΗΔΔ",
-      "description": "Ηλεκτρική Δραστηριότητα Χωρίς Σφυγμό"
+      "description": "Άσφυγμη Ηλεκτρική Δραστηριότητα"
     }
   },
   "rhythms_list": {
