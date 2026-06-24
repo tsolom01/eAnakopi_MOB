@@ -23,6 +23,7 @@ export default {
         ios: {
             supportsTablet: true,
             bundleIdentifier: 'com.eanakopi.app',
+            requireFullScreen: true,
         },
         android: {
             adaptiveIcon: {
@@ -32,6 +33,7 @@ export default {
             edgeToEdgeEnabled: true,
             package: 'com.eanakopi.app',
             usesCleartextTraffic: true,
+            screenOrientation: 'portrait',
         },
         web: {
             favicon: './assets/favicon.png',
@@ -40,6 +42,12 @@ export default {
             'expo-localization',
             'expo-secure-store',
             'expo-audio',
+            [
+                'expo-screen-orientation',
+                {
+                    initialOrientation: 'PORTRAIT_UP',
+                },
+            ],
         ],
         extra: {
             apiBaseUrl,

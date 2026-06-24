@@ -102,7 +102,7 @@ const ActualInterventionsPanel = () => {
                     onPress={() => {
                         setModalItems(nonTriggerableMeds);
                         setModalTitleKey('medication_extra_list.title');
-                        setShowDescriptions(true);
+                        setShowDescriptions(false);
                         setShowModal(true);
                         setShowOther({visible:true,onPress:onOtherMedication,labelKey:'other',label:'other'})
                     }}
