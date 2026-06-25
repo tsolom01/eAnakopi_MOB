@@ -1,8 +1,8 @@
 export  const ERC_ALGORITHMS = [
     {
-        id: 'inHospitalResuscitation',
-        labelKey: 'inHospitalResuscitation',
-        image: require('../../../../assets/images/ercImages/in_hospital_resuscitation.png'),
+        id: 'advancedLifeSupportKeyMessage',
+        labelKey: 'advancedLifeSupportKeyMessage',
+        image: require('../../../../assets/images/ercImages/advanced_life_support_key.png'),
     },
     {
         id: 'advancedLifeSupport',
@@ -10,14 +10,14 @@ export  const ERC_ALGORITHMS = [
         image: require('../../../../assets/images/ercImages/advanced_life_support.png'),
     },
     {
+        id: 'inHospitalResuscitation',
+        labelKey: 'inHospitalResuscitation',
+        image: require('../../../../assets/images/ercImages/in_hospital_resuscitation.png'),
+    },
+    {
         id: 'tachycardia',
         labelKey: 'tachycardia',
         image: require('../../../../assets/images/ercImages/tachycardia.png'),
-    },
-    {
-        id: 'anaphylaxis', // ANAPHYLAXIS
-        labelKey: 'anaphylaxis', // translation key
-        image: require('../../../../assets/images/ercImages/anaphylaxis.png'), // path to your image
     },
     {
         id: 'bradycardia',
@@ -25,24 +25,14 @@ export  const ERC_ALGORITHMS = [
         image: require('../../../../assets/images/ercImages/bradycardia.png'),
     },
     {
-        id: 'traumaticCardiacArrest',
-        labelKey: 'traumaticCardiacArrest',
-        image: require('../../../../assets/images/ercImages/traumatic_cardiac_arrest.png'),
-    },
-    {
         id: 'hyperkalaemia',
         labelKey: 'hyperkalaemia',
         image: require('../../../../assets/images/ercImages/hyperkalaemia.png'),
     },
     {
-        id: 'accidentalHypothermia',
-        labelKey: 'accidentalHypothermia',
-        image: require('../../../../assets/images/ercImages/accidental_hypothermia.png'),
-    },
-    {
-        id: 'icpr',
-        labelKey: 'icpr',
-        image: require('../../../../assets/images/ercImages/icpr.png'),
+        id: 'hypokalaemia',
+        labelKey: 'hypokalaemia',
+        image: require('../../../../assets/images/ercImages/hypokalaemia.png'),
     },
     {
         id: 'hyperthermia',
@@ -50,9 +40,9 @@ export  const ERC_ALGORITHMS = [
         image: require('../../../../assets/images/ercImages/hyperthermia.png'),
     },
     {
-        id: 'coronaryThrombosis',
-        labelKey: 'coronaryThrombosis',
-        image: require('../../../../assets/images/ercImages/coronary_thrombosis.png'),
+        id: 'accidentalHypothermia',
+        labelKey: 'accidentalHypothermia',
+        image: require('../../../../assets/images/ercImages/accidental_hypothermia.png'),
     },
     {
         id: 'toxicExposure',
@@ -60,18 +50,28 @@ export  const ERC_ALGORITHMS = [
         image: require('../../../../assets/images/ercImages/toxic_exposure.png'),
     },
     {
+        id: 'traumaticCardiacArrest',
+        labelKey: 'traumaticCardiacArrest',
+        image: require('../../../../assets/images/ercImages/traumatic_cardiac_arrest.png'),
+    },
+    {
+        id: 'cardiacArrestDuringDialysis',
+        labelKey: 'cardiacArrestDuringDialysis',
+        image: require('../../../../assets/images/ercImages/cardiacArrestDuringDialysis.png'),
+    },
+    {
+        id: 'coronaryThrombosis',
+        labelKey: 'coronaryThrombosis',
+        image: require('../../../../assets/images/ercImages/coronary_thrombosis.png'),
+    },
+    {
         id: 'cardiacSurgery',
         labelKey: 'cardiacSurgery',
         image: require('../../../../assets/images/ercImages/cardiac_surgery.png'),
     },
     {
-        id: 'cardiacCatheterisationLab',
-        labelKey: 'cardiacCatheterisationLab',
-        image: require('../../../../assets/images/ercImages/cardiac_cath_lab.png'),
-    },
-    {
-        id: 'acuteAsthma',
-        labelKey: 'acuteAsthma',
-        image: require('../../../../assets/images/ercImages/acute_asthma.png'),
+        id: 'unconsciousPatient',
+        labelKey: 'unconsciousPatient',
+        image: require('../../../../assets/images/ercImages/unconsciousPatient.png'),
     },
 ];
