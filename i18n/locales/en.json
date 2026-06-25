@@ -200,7 +200,9 @@
   "menuModal": {
     "settings": "Settings",
     "guide" : "Guides",
-    "ercAlgorithms" : "ERC Algorithms 2021"
+    "ercAlgorithms" : "ERC Algorithms",
+    "privacyPolicy": "Privacy Policy",
+    "termsAndConditions": "Terms and Conditions"
   },
 
   "settingModal": {

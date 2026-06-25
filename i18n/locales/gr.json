@@ -197,7 +197,9 @@
   "menuModal": {
     "settings": "Ρυθμίσεις",
     "guide": "Οδηγός",
-    "ercAlgorithms": "Αλγόριθμοι ERC 2021"
+    "ercAlgorithms": "Αλγόριθμοι ERC",
+    "privacyPolicy": "Πολιτική Απορρήτου",
+    "termsAndConditions": "Όροι και Προϋποθέσεις"
   },
   "settingModal": {
     "cprCycleDuration": "Διάρκεια κύκλου ΚΑΡΠΑ (δευτ.)"
