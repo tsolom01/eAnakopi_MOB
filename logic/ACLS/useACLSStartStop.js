@@ -3,6 +3,7 @@ import { useHistoryStore } from '../../stores/historyStore';
 import { useRhythmStore } from '../../stores/rhythmStore';
 import { useInterventionStore } from '../../stores/interventionStore';
 import { useAuthStore } from '../../stores/authStore';
+import { useSessionReportStore } from '../../stores/sessionReportStore';
 import { HistoryAction } from '../../constants/history/historyConstants';
 
 export const useACLSStartStop = () => {
@@ -25,17 +26,27 @@ export const useACLSStartStop = () => {
         );
 
         const { history } = useHistoryStore.getState();
-        const uploadSessionHistory = useAuthStore.getState().uploadSessionHistory;
+        const { isAuthenticated, username, uploadSessionHistory } = useAuthStore.getState();
 
-        const result = await uploadSessionHistory({
-            endReasonId: reason.id,
-            eventLog: history,
-        });
+        if (isAuthenticated) {
+            const result = await uploadSessionHistory({
+                endReasonId: reason.id,
+                eventLog: history,
+            });
 
-        if (__DEV__) {
             if (result.success) {
-                console.log('[history] uploaded:', result.data?.id);
-            } else {
+                useSessionReportStore.getState().showReport({
+                    endReasonId: reason.id,
+                    eventLog: [...history],
+                    submittedAt: result.data?.submittedAt ?? new Date().toISOString(),
+                    username,
+                    recordId: result.data?.id,
+                });
+
+                if (__DEV__) {
+                    console.log('[history] uploaded:', result.data?.id);
+                }
+            } else if (__DEV__) {
                 console.warn('[history] upload failed:', result.error);
             }
         }

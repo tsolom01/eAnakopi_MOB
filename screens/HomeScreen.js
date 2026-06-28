@@ -10,6 +10,7 @@ import ActualInterventionsPanel from '../components/Home/ActualInterventionsPane
 import MenuModal from '../components/screens/Menu/MenuModal/MenuModal';
 import OrganizationLogos from '../components/common/OrganizationLogos';
 import LoginModal from '../components/auth/LoginModal';
+import SessionReportModal from '../components/modals/SessionReportModal';
 import ProfileScreen from './ProfileScreen';
 import { InterventionWatcher } from '../logic/interventions/InterventionWatcher';
 import { HomeLayoutProvider, getHomeLayoutMetrics } from '../context/HomeLayoutContext';
@@ -72,6 +73,7 @@ const HomeScreen = () => {
 
                 <MenuModal visible={showMenuModal} setShowMenuModal={setShowMenuModal} />
                 <LoginModal visible={showLoginModal} onClose={() => setShowLoginModal(false)} />
+                <SessionReportModal />
                 <ProfileScreen visible={showProfile} onClose={() => setShowProfile(false)} />
             </HomeLayoutProvider>
         </SafeAreaView>
