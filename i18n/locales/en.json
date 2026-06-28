@@ -86,7 +86,12 @@
   "amiodarone" : "Amiodarone",
   "other" : "Other",
   "enterMedication" : "Enter Medication Name",
-  "ercAlgorithms" : "ERC Algorithms",
+  "ercAlgorithms": "ERC Algorithms",
+  "algorithmSearch": {
+    "placeholder": "Search algorithms...",
+    "noResults": "No algorithms found",
+    "clear": "Clear search"
+  },
   "inHospitalResuscitation" : "In-hospital resuscitation",
   "advancedLifeSupport" : "Advanced Life Support Algorithm",
   "advancedLifeSupportKeyMessage": "Advanced life support – Key messages",
@@ -207,11 +212,7 @@
   },
 
   "settingModal": {
-    "cprCycleDuration": "CPR cycle duration(Sec)"
+    "cprCycleDuration": "CPR cycle duration (Sec)"
 
   }
-
-
-
-
 }

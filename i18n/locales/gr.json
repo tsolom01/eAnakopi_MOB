@@ -87,6 +87,11 @@
   "other" : "Άλλο",
   "enterMedication" : "Εισάγετε το όνομα του φαρμάκου",
   "ercAlgorithms" : "Αλγόριθμοι ERC",
+  "algorithmSearch": {
+    "placeholder": "Αναζήτηση αλγορίθμων...",
+    "noResults": "Δεν βρέθηκαν αλγόριθμοι",
+    "clear": "Καθαρισμός αναζήτησης"
+  },
   "inHospitalResuscitation" : "In-hospital resuscitation",
   "advancedLifeSupport" : "Advanced Life Support Algorithm",
   "advancedLifeSupportKeyMessage": "Advanced life support – Key messages",

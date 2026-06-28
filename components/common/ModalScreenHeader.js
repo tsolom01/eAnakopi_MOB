@@ -6,8 +6,8 @@ import { COLORS } from '../../styles/layout';
 
 export const ModalScreenHeader = ({ title, onBack, variant = 'light' }) => {
     const isDark = variant === 'dark';
-    const iconColor = isDark ? '#FFFFFF' : COLORS.text;
-    const titleColor = isDark ? '#FFFFFF' : COLORS.text;
+    const iconColor = COLORS.text;
+    const titleColor =  COLORS.text;
 
     return (
         <View style={[styles.header, isDark && styles.headerDark]}>
@@ -39,7 +39,6 @@ const styles = StyleSheet.create({
         backgroundColor: COLORS.surface,
     },
     headerDark: {
-        backgroundColor: COLORS.headerBg,
         borderBottomColor: 'transparent',
     },
     backButton: {

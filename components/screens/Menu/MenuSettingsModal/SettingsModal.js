@@ -185,8 +185,6 @@ const styles = StyleSheet.create({
         fontWeight: '600',
         color: COLORS.textSecondary,
         marginBottom: scale(12),
-        textTransform: 'uppercase',
-        letterSpacing: 0.5,
     },
     cprRow: {
         flexDirection: 'row',
