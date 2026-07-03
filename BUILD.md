@@ -48,7 +48,7 @@ Use the same login as the dev API, e.g. `demo` / `demo1234` or your own user.
 
 ## Update API URL later
 
-Edit `eas.json` → `build.preview.env.EXPO_PUBLIC_API_BASE_URL`, then run `npm run build:apk` again.
+Edit `config/environments.js` → `production.apiBaseUrl` after prod deploy, then run `npm run build:apk:prod`.
 
 ## Local build (optional, needs Android SDK)
 

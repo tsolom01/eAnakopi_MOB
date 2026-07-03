@@ -1,6 +1,7 @@
 import { Platform } from 'react-native';
+import Constants from 'expo-constants';
 
-/** Default API URL per platform when EXPO_PUBLIC_API_BASE_URL is not set. */
+/** Default API URL per platform when no env config is set. */
 const getDefaultApiUrl = () => {
     if (Platform.OS === 'android') {
         // Android emulator: host machine is 10.0.2.2
@@ -10,7 +11,10 @@ const getDefaultApiUrl = () => {
     return 'http://localhost:3000';
 };
 
-const API_BASE_URL = process.env.EXPO_PUBLIC_API_BASE_URL ?? getDefaultApiUrl();
+const API_BASE_URL =
+    process.env.EXPO_PUBLIC_API_BASE_URL ??
+    Constants.expoConfig?.extra?.apiBaseUrl ??
+    getDefaultApiUrl();
 
 export const config = {
     apiBaseUrl: API_BASE_URL.replace(/\/$/, ''),

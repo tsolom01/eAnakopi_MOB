@@ -1,14 +1,13 @@
-// Expo config — EXPO_PUBLIC_* vars are inlined at build time.
-// For EAS builds, preview/production URLs are set in eas.json.
-// For local dev, use .env (see .env.example).
+// Expo config — env URLs live in config/environments.js (APP_ENV=development|production).
+// Local: npm run dev | npm run prod. EAS: preview → dev, production → prod (see eas.json).
 
-const apiBaseUrl =
-    process.env.EXPO_PUBLIC_API_BASE_URL ??
-    'https://ea-94b10f92401641a89159d8440108e002.ecs.eu-central-1.on.aws';
+import { resolveEnvironment } from './config/environments.js';
+
+const { env, appName, apiBaseUrl } = resolveEnvironment();
 
 export default {
     expo: {
-        name: 'eAnakopi',
+        name: appName,
         slug: 'eanakopi',
         version: '1.0.0',
         orientation: 'portrait',
@@ -50,6 +49,7 @@ export default {
             ],
         ],
         extra: {
+            appEnv: env,
             apiBaseUrl,
             eas: {
                 projectId: '463477d6-598c-49bb-bd7d-79658e6495ef',

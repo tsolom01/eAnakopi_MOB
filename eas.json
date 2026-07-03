@@ -17,7 +17,7 @@
         "buildType": "apk"
       },
       "env": {
-        "EXPO_PUBLIC_API_BASE_URL": "https://ea-94b10f92401641a89159d8440108e002.ecs.eu-central-1.on.aws"
+        "APP_ENV": "development"
       }
     },
     "production": {
@@ -25,7 +25,7 @@
         "buildType": "app-bundle"
       },
       "env": {
-        "EXPO_PUBLIC_API_BASE_URL": "https://ea-94b10f92401641a89159d8440108e002.ecs.eu-central-1.on.aws"
+        "APP_ENV": "production"
       }
     }
   },
