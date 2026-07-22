@@ -1,20 +1,19 @@
 /**
- * Single source of truth for dev vs prod settings.
- * Override at build time with EXPO_PUBLIC_API_BASE_URL or APP_ENV.
- *
- * Prod URL: after `bash deploy/ecs-express.sh prod` in eAnakopi_APIs, copy the printed
- * EXPO_PUBLIC_API_BASE_URL into production.apiBaseUrl below.
+ * Single source of truth for app settings.
+ * One cloud API (Lambda + HTTP API) — same URL for local "dev" and "prod" scripts.
+ * Override: EANAKOPI_FORCE_API_URL=http://localhost:3000 npm run dev
  */
+
+const API_BASE_URL = 'https://aqgxnr9ovb.execute-api.eu-central-1.amazonaws.com';
 
 const environments = {
     development: {
         appName: 'eAnakopi Dev',
-        apiBaseUrl: 'https://ea-94b10f92401641a89159d8440108e002.ecs.eu-central-1.on.aws',
+        apiBaseUrl: API_BASE_URL,
     },
     production: {
         appName: 'eAnakopi',
-        // TODO: replace with your prod ECS Express URL after first prod deploy
-        apiBaseUrl: 'https://ea-REPLACE_WITH_PROD_ENDPOINT.ecs.eu-central-1.on.aws',
+        apiBaseUrl: API_BASE_URL,
     },
 };
 
@@ -30,7 +29,6 @@ export function resolveEnvironment() {
     const envKey = normalizeEnvName(process.env.APP_ENV ?? fromProfile ?? 'development');
     const base = environments[envKey];
 
-    // When APP_ENV is set (npm run dev/prod, EAS), use config URLs — not a stale .env override.
     const apiBaseUrl = (
         process.env.EANAKOPI_FORCE_API_URL ??
         (process.env.APP_ENV || fromProfile ? base.apiBaseUrl : null) ??
